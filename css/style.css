@@ -1,6 +1,7 @@
 body {
     background-color: rgb(31, 40, 47);
 }
+
 .tabuleiro{
     display: flex;
     justify-content: center;
@@ -10,11 +11,13 @@ body {
     gap:0.8em;
     padding-bottom: 0.8em;
 }
+
 .lugar {
     width: 10rem;
     height: 10rem;
     background-color: rgb(41, 52, 61);
 }
+
 .locais{
     display: flex;
     justify-content: center;
@@ -24,11 +27,13 @@ body {
     gap:0.8em;
     padding-bottom: 0.8em;
 }
+
 .local {
     width: 15rem;
     height: 15rem;
     background-color: rgb(35, 45, 53);
 }
+
 .container{
     display: flex;
     justify-content: center;
@@ -36,10 +41,25 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .deck{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: .8em;
+}
+
+.card{
+    width: 7rem;
+    height: 8.1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+
+    border-radius: 10px;
+    background-color: pink;
 }
