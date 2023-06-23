@@ -12,3 +12,37 @@ var cartas = [
     { forca: 11, energia: 11 },
     { forca: 12, energia: 12 }
 ];
+
+function reset(){
+    location.reload();
+}
+
+function criaCarta(){
+    const deck = document.querySelector('.deck');
+    for(let i=0; i <4;i++){
+        const indice = i;
+        const carta = document.createElement('div');
+        carta.classList.add('card');
+        carr = deck.appendChild(carta);
+
+        const forca = document.createElement('span');
+        forca.classList.add('forca');
+        forca.innerHTML = cartas[indice].forca;
+        carr.appendChild(forca);
+        
+        const energia = document.createElement('span');
+        energia.classList.add('energia');
+        energia.innerHTML = cartas[indice].energia;
+        carr.appendChild(energia);
+
+        carta.addEventListener('click', function() {
+            carta.classList.toggle('scaled');
+        });
+    }
+}
+
+const botaoInicio = document.getElementById('iniciar');    
+botaoInicio.addEventListener('click', criaCarta);
+
+const botaoreset = document.getElementById('reset');    
+botaoreset.addEventListener('click', reset);
