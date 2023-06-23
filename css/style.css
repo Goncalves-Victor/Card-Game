@@ -10,6 +10,11 @@ body {
     gap:0.8em;
     padding-bottom: 0.8em;
 }
+.lugar {
+    width: 10rem;
+    height: 10rem;
+    background-color: rgb(41, 52, 61);
+}
 .locais{
     display: flex;
     justify-content: center;
@@ -18,6 +23,11 @@ body {
     flex-wrap: wrap;
     gap:0.8em;
     padding-bottom: 0.8em;
+}
+.local {
+    width: 15rem;
+    height: 15rem;
+    background-color: rgb(35, 45, 53);
 }
 .container{
     display: flex;
