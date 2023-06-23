@@ -1,5 +1,13 @@
+main {
+    height: 1000px;
+}
+
 body {
     background-color: rgb(31, 40, 47);
+}
+
+span{
+    color: black;
 }
 
 .tabuleiro{
@@ -62,4 +70,18 @@ body {
 
     border-radius: 10px;
     background-color: pink;
+}
+
+.scaled{
+    scale: 1.2;
+}
+
+.forca{
+    font-size: 4rem;
+    font-family: 'Audiowide', cursive;
+}
+
+.energia{
+    font-size: 3rem;
+    font-family: 'Audiowide', cursive; 
 }
