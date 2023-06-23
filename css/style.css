@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(31, 40, 47);
+}
+.tabuleiro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:0.8em;
+    padding-bottom: 0.8em;
+}
+.locais{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:0.8em;
+    padding-bottom: 0.8em;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.deck{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: .8em;
+}
