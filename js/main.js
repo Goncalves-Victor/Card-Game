@@ -41,13 +41,13 @@ const localTresp = document.getElementById('tres');
 localTresp.addEventListener('click', moveCardToTresp);
 
 const energiaPlay = document.querySelector('.energiaPlayer');
-
+const placarRodada = document.querySelector('.rodadas');
 
 function proximarodada(){
     rodadas++;
     energiaPlayer = rodadas;
-
-    energiaPlay.innerHTML = energiaPlayer;
+    placarRodada.innerHTML = rodadas;
+    energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
 
     criaCarta();
 
@@ -61,7 +61,8 @@ function reset(){
 }
 
 function criaCarta(){
-    energiaPlay.innerHTML = energiaPlayer;
+    placarRodada.innerHTML = `RODADAS: ${rodadas}`;
+    energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
     const deck = document.querySelector('.deck');
 
     var tam = rodadas;
@@ -111,7 +112,8 @@ function moveCardToUmp() {
         if(confere(energia)){
 
             energiaPlayer = energiaPlayer-energia;
-            energiaPlay.innerHTML=energiaPlayer;
+
+            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
 
             const lugarUm = document.getElementById('ump');
             lugarUm.appendChild(selectedCard);
@@ -139,7 +141,7 @@ function moveCardToDoisp() {
         if(confere(energia)){
 
             energiaPlayer = energiaPlayer-energia;
-            energiaPlay.innerHTML=energiaPlayer;
+            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
 
             const lugarDois = document.getElementById('doisp');
             lugarDois.appendChild(selectedCard);
@@ -167,7 +169,7 @@ function moveCardToTresp() {
         if(confere(energia)){
 
             energiaPlayer = energiaPlayer-energia;
-            energiaPlay.innerHTML=energiaPlayer;
+            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
 
             const lugarTres = document.getElementById('tresp');
             lugarTres.appendChild(selectedCard);
