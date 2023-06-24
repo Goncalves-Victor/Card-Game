@@ -14,17 +14,65 @@ var cartas = [
 ];
 
 var selectedCard = null;
+var energiaPlayer = 1;
+
 var forcaTot1 = 0;
 var forcaTot2 = 0;
 var forcaTot3 = 0;
+
+var rodadas = 1;
+
+const botaoInicio = document.getElementById('iniciar');    
+botaoInicio.addEventListener('click', criaCarta);
+
+const botaoreset = document.getElementById('reset');    
+botaoreset.addEventListener('click', reset);
+
+const proxrodada = document.getElementById('rodada');
+proxrodada.addEventListener('click', proximarodada);
+
+const localUmp = document.getElementById('um');
+localUmp.addEventListener('click', moveCardToUmp);
+
+const localDoisp = document.getElementById('dois');
+localDoisp.addEventListener('click', moveCardToDoisp);
+
+const localTresp = document.getElementById('tres');
+localTresp.addEventListener('click', moveCardToTresp);
+
+const energiaPlay = document.querySelector('.energiaPlayer');
+
+
+function proximarodada(){
+    rodadas++;
+    energiaPlayer = rodadas;
+
+    energiaPlay.innerHTML = energiaPlayer;
+
+    criaCarta();
+
+    if(energiaPlayer>5){
+        proxrodada.removeEventListener('click', proximarodada);
+    }
+}
 
 function reset(){
     location.reload();
 }
 
 function criaCarta(){
+    energiaPlay.innerHTML = energiaPlayer;
     const deck = document.querySelector('.deck');
-    for(let i=0; i < 4; i++){
+
+    var tam = rodadas;
+
+    if(rodadas==1){
+        tam = 4;
+    }else{
+        tam=1;
+    }
+
+    for(let i=0; i < tam; i++){
         const indice = i;
         const carta = document.createElement('div');
         carta.classList.add('card');
@@ -47,79 +95,94 @@ function criaCarta(){
     }
 }
 
-function moveCardToUmp() {
-    if (selectedCard !== null) {
-        const lugarUm = document.getElementById('ump');
-        lugarUm.appendChild(selectedCard);
-        selectedCard.classList.remove('scaled');
-        selectedCard.classList.add('set');
-        
-        const forcaCarta = selectedCard.querySelector('.forca');
-        const forcaTotal = document.getElementById('1');
-        const forca = parseInt(forcaCarta.innerHTML);
-        forcaTot1 = forcaTot1+forca;
-        forcaTotal.classList.add('forca');
-        forcaTotal.textContent = forcaTot1;
+function confere(energia){  //funcão para conferir se a carta pode ser colocada
+    if(energia<=energiaPlayer){
+        return true;
+    }else{
+        return false;
+    }
+}
 
-        const energiaCarta = selectedCard.querySelector('.energia');
-        energiaCarta.textContent = "";
-        selectedCard = null;
+function moveCardToUmp() {
+    const energiaCarta = selectedCard.querySelector('.energia');
+    const energia = parseInt(energiaCarta.innerHTML);
+
+    if (selectedCard !== null){
+        if(confere(energia)){
+
+            energiaPlayer = energiaPlayer-energia;
+            energiaPlay.innerHTML=energiaPlayer;
+
+            const lugarUm = document.getElementById('ump');
+            lugarUm.appendChild(selectedCard);
+            selectedCard.classList.remove('scaled');
+            selectedCard.classList.add('set');
+
+            const forcaCarta = selectedCard.querySelector('.forca');
+            const forcaTotal = document.getElementById('1');
+            const forca = parseInt(forcaCarta.innerHTML);
+            forcaTot1 = forcaTot1+forca;
+            forcaTotal.classList.add('forca');
+            forcaTotal.textContent = forcaTot1;
+
+            energiaCarta.textContent = "";
+            selectedCard = null;  
+        }
     }
 }
 
 function moveCardToDoisp() {
-    if (selectedCard !== null) {
-        const lugarDois = document.getElementById('doisp');
-        lugarDois.appendChild(selectedCard);
-        selectedCard.classList.remove('scaled');
-        selectedCard.classList.add('set');
+    const energiaCarta = selectedCard.querySelector('.energia');
+    const energia = parseInt(energiaCarta.innerHTML);
 
-        const forcaCarta = selectedCard.querySelector('.forca');
-        const forcaTotal = document.getElementById('2');
-        const forca = parseInt(forcaCarta.innerHTML);
-        forcaTot2 = forcaTot2+forca;
-        forcaTotal.classList.add('forca');
-        forcaTotal.textContent = forcaTot2;
+    if (selectedCard !== null){
+        if(confere(energia)){
 
-        const energiaCarta = selectedCard.querySelector('.energia');
-        energiaCarta.textContent = "";
-        selectedCard = null;
+            energiaPlayer = energiaPlayer-energia;
+            energiaPlay.innerHTML=energiaPlayer;
+
+            const lugarDois = document.getElementById('doisp');
+            lugarDois.appendChild(selectedCard);
+            selectedCard.classList.remove('scaled');
+            selectedCard.classList.add('set');
+
+            const forcaCarta = selectedCard.querySelector('.forca');
+            const forcaTotal = document.getElementById('2');
+            const forca = parseInt(forcaCarta.innerHTML);
+            forcaTot2 = forcaTot2+forca;
+            forcaTotal.classList.add('forca');
+            forcaTotal.textContent = forcaTot2;
+
+            energiaCarta.textContent = "";
+            selectedCard = null;  
+        }
     }
 }
 
 function moveCardToTresp() {
-    if (selectedCard !== null) {
-        const lugarTres = document.getElementById('tresp');
-        lugarTres.appendChild(selectedCard);
-        selectedCard.classList.remove('scaled');
-        selectedCard.classList.add('set');
+    const energiaCarta = selectedCard.querySelector('.energia');
+    const energia = parseInt(energiaCarta.innerHTML);
 
-        const forcaCarta = selectedCard.querySelector('.forca');
-        const forcaTotal = document.getElementById('3');
-        const forca = parseInt(forcaCarta.innerHTML);
-        forcaTot3 = forcaTot3+forca;
-        forcaTotal.classList.add('forca');
-        forcaTotal.textContent = forcaTot3;
-        
-        const energiaCarta = selectedCard.querySelector('.energia');
-        energiaCarta.textContent = "";
-        selectedCard = null;  
+    if (selectedCard !== null){
+        if(confere(energia)){
+
+            energiaPlayer = energiaPlayer-energia;
+            energiaPlay.innerHTML=energiaPlayer;
+
+            const lugarTres = document.getElementById('tresp');
+            lugarTres.appendChild(selectedCard);
+            selectedCard.classList.remove('scaled');
+            selectedCard.classList.add('set');
+
+            const forcaCarta = selectedCard.querySelector('.forca');
+            const forcaTotal = document.getElementById('3');
+            const forca = parseInt(forcaCarta.innerHTML);
+            forcaTot3 = forcaTot3+forca;
+            forcaTotal.classList.add('forca');
+            forcaTotal.textContent = forcaTot3;
+
+            energiaCarta.textContent = "";
+            selectedCard = null;  
+        }
     }
 }
-
-const botaoInicio = document.getElementById('iniciar');    
-botaoInicio.addEventListener('click', criaCarta);
-
-const botaoreset = document.getElementById('reset');    
-botaoreset.addEventListener('click', reset);
-
-
-
-const localUmp = document.getElementById('um');
-localUmp.addEventListener('click', moveCardToUmp);
-
-const localDoisp = document.getElementById('dois');
-localDoisp.addEventListener('click', moveCardToDoisp);
-
-const localTresp = document.getElementById('tres');
-localTresp.addEventListener('click', moveCardToTresp);
