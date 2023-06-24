@@ -1,16 +1,16 @@
 var cartas = [
     { forca: 1, energia: 1 },
     { forca: 2, energia: 2 },
-    { forca: 3, energia: 3 },
-    { forca: 4, energia: 4 },
-    { forca: 5, energia: 5 },
-    { forca: 6, energia: 6},
-    { forca: 7, energia: 7 },
-    { forca: 8, energia: 8 },
-    { forca: 9, energia: 9 },
-    { forca: 10, energia: 10 },
-    { forca: 11, energia: 11 },
-    { forca: 12, energia: 12 }
+    { forca: 3, energia: 2 },
+    { forca: 4, energia: 1 },
+    { forca: 5, energia: 2 },
+    { forca: 6, energia: 2},
+    { forca: 7, energia: 3 },
+    { forca: 8, energia: 3 },
+    { forca: 9, energia: 3 },
+    { forca: 10, energia: 5 },
+    { forca: 11, energia: 4 },
+    { forca: 12, energia: 6 }
 ];
 
 var selectedCard = null;
@@ -22,8 +22,12 @@ var forcaTot3 = 0;
 
 var rodadas = 1;
 
+var cartaPlayer;
+var restantePlayer;
+
+
 const botaoInicio = document.getElementById('iniciar');    
-botaoInicio.addEventListener('click', criaCarta);
+botaoInicio.addEventListener('click', setup);
 
 const botaoreset = document.getElementById('reset');    
 botaoreset.addEventListener('click', reset);
@@ -43,13 +47,79 @@ localTresp.addEventListener('click', moveCardToTresp);
 const energiaPlay = document.querySelector('.energiaPlayer');
 const placarRodada = document.querySelector('.rodadas');
 
+function DistribuiCartas(){
+    var v=[]
+    while(v.length!=4){
+        let numero=Math.floor(Math.random() *12)
+        if(v.indexOf(numero)==-1){
+            v.push(numero)
+        }
+    }
+    return v
+}
+
+function ordena(vet){
+    let aux=[]
+    while(vet.length>0){
+        let menor = Math.min(...vet)
+        aux.push(menor)
+        vet.splice(vet.indexOf(menor),1)
+    }
+    return aux;
+}
+
+function cartasplayer(cartas){
+
+    var cartasRestantes = [];
+
+    for (let i = 0; i < 12; i++) {
+      if (!cartas.includes(i)) {
+        cartasRestantes.push(i);
+      }
+    }
+    return cartasRestantes;
+}
+
+function player(){
+    var cartas = DistribuiCartas();
+    cartas = ordena(cartas);
+    var restantesplayer = cartasplayer(cartas);
+    cartaPlayer = cartas;
+    restantePlayer = restantesplayer;
+    return restantesplayer;
+}
+
+function setup(){
+    player();
+    criaCarta();
+    botaoInicio.removeEventListener('click', setup);
+}
+
+function embaralhar(restantes) {
+    for (let i = restantes.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [restantes[i], restantes[j]] = [restantes[j], restantes[i]];
+    }
+    return restantes;
+}
+
 function proximarodada(){
     rodadas++;
-    energiaPlayer = rodadas;
     placarRodada.innerHTML = rodadas;
+    
+    energiaPlayer = rodadas;
     energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
 
-    criaCarta();
+    var restantesplayer = restantePlayer;
+    restantesplayer = embaralhar(restantesplayer);
+    
+    if(cartaPlayer.length<4){
+        var restp = restantePlayer.pop();
+        cartaPlayer.push(restp);
+        criaCarta();
+    }else{
+
+    }
 
     if(energiaPlayer>5){
         proxrodada.removeEventListener('click', proximarodada);
@@ -65,19 +135,20 @@ function criaCarta(){
     energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
     const deck = document.querySelector('.deck');
 
-    var tam = rodadas;
+    let  tamanho = cartaPlayer.length;
+    
+    for(let i = 0; i < tamanho; i++) {
+        if(rodadas==1){
+            var indice = cartaPlayer[i];
+        }else{
+            tamanho = 1;
+            indice = cartaPlayer[cartaPlayer.length-1];
+        }
 
-    if(rodadas==1){
-        tam = 4;
-    }else{
-        tam=1;
-    }
-
-    for(let i=0; i < tam; i++){
-        const indice = i;
         const carta = document.createElement('div');
         carta.classList.add('card');
         carr = deck.appendChild(carta);
+        carta.style.backgroundColor = corCard();
 
         const forca = document.createElement('span');
         forca.classList.add('forca');
@@ -104,12 +175,32 @@ function confere(energia){  //funcão para conferir se a carta pode ser colocada
     }
 }
 
+function corCard(){
+    const cores = [
+        '#ffa446',
+        '#ffa588',
+        '#d62957',
+        '#1693a5',
+        '#572e4f',
+        '#6cb6a5',
+        '#51615b',
+        '#191f04',
+        '#7abf66',
+        '#525574',
+    ];
+
+    let indiceCor = Math.floor(Math.random() * cores.length)
+
+    return cores[indiceCor];
+}
+
 function moveCardToUmp() {
     const energiaCarta = selectedCard.querySelector('.energia');
     const energia = parseInt(energiaCarta.innerHTML);
 
     if (selectedCard !== null){
         if(confere(energia)){
+            cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
 
@@ -139,6 +230,7 @@ function moveCardToDoisp() {
 
     if (selectedCard !== null){
         if(confere(energia)){
+            cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
             energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
@@ -164,9 +256,9 @@ function moveCardToDoisp() {
 function moveCardToTresp() {
     const energiaCarta = selectedCard.querySelector('.energia');
     const energia = parseInt(energiaCarta.innerHTML);
-
     if (selectedCard !== null){
         if(confere(energia)){
+            cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
             energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
