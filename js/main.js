@@ -25,7 +25,6 @@ var rodadas = 1;
 var cartaPlayer;
 var restantePlayer;
 
-
 const energiaPlay = document.querySelector('.energiaPlayer');
 const placarRodada = document.querySelector('.rodadas');
 
@@ -39,11 +38,11 @@ const proxrodada = document.getElementById('rodada');
 proxrodada.addEventListener('click', proximarodada);
 
 
-function reset(){
+function reset(){ //funcao para dar reload na pagina
     location.reload();
 }
 
-function DistribuiCartas(){
+function DistribuiCartas(){ //funcao que cria o vetor aleatorio para as 4 cartas aleatorias
     var v=[]
     while(v.length!=4){
         let numero=Math.floor(Math.random() *12)
@@ -54,7 +53,7 @@ function DistribuiCartas(){
     return v
 }
 
-function ordena(vet){
+function ordena(vet){ //funcao para que ordene o vetor em ordem 
     let aux=[]
     while(vet.length>0){
         let menor = Math.min(...vet)
@@ -64,7 +63,7 @@ function ordena(vet){
     return aux;
 }
 
-function cartasplayer(cartas){
+function cartasplayer(cartas){ //funcao que retorna o restante das cartas do player
 
     var cartasRestantes = [];
 
@@ -76,7 +75,7 @@ function cartasplayer(cartas){
     return cartasRestantes;
 }
 
-function player(){
+function player(){ //funcao para inicializar o jogador
     var cartas = DistribuiCartas();
     cartas = ordena(cartas);
     var restantesplayer = cartasplayer(cartas);
@@ -153,8 +152,19 @@ function criaCarta(){
         carr.appendChild(energia);
 
         carta.addEventListener('click', function() {
-            carta.classList.toggle('scaled');
-            selectedCard = carta;
+            if(selectedCard==carta){
+                carta.classList.remove('scaled');
+                selectedCard=null;
+
+            }else if(selectedCard != null){
+                selectedCard.classList.remove('scaled');
+                carta.classList.add('scaled');
+                selectedCard = carta;
+
+            }else{
+                carta.classList.add('scaled');
+                selectedCard = carta;
+            }
         });
     }
 }
@@ -205,7 +215,7 @@ function moveCardToUmp() {
     const energia = parseInt(energiaCarta.innerHTML);
 
     if (selectedCard !== null){
-        if(confere(energia) && maxUm <4){
+        if(confere(energia) && maxUm <4 && selectedCard.classList.contains('scaled')){
             maxUm++;
             cartaPlayer.pop();
 
@@ -236,7 +246,7 @@ function moveCardToDoisp() {
     const energia = parseInt(energiaCarta.innerHTML);
 
     if (selectedCard !== null){
-        if(confere(energia) && maxDois<4){
+        if(confere(energia) && maxDois<4 && selectedCard.classList.contains('scaled')){
             maxDois++;
             cartaPlayer.pop();
 
@@ -265,7 +275,7 @@ function moveCardToTresp() {
     const energiaCarta = selectedCard.querySelector('.energia');
     const energia = parseInt(energiaCarta.innerHTML);
     if (selectedCard !== null){
-        if(confere(energia) && maxTres<4){
+        if(confere(energia) && maxTres<4 && selectedCard.classList.contains('scaled')){
             maxTres++;
             cartaPlayer.pop();
 
