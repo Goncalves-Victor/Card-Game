@@ -1,16 +1,16 @@
 var cartas = [
     { forca: 1, energia: 1 },
-    { forca: 2, energia: 2 },
-    { forca: 3, energia: 2 },
+    { forca: 2, energia: 1 },
+    { forca: 3, energia: 1 },
     { forca: 4, energia: 1 },
-    { forca: 5, energia: 2 },
-    { forca: 6, energia: 2},
-    { forca: 7, energia: 3 },
-    { forca: 8, energia: 3 },
-    { forca: 9, energia: 3 },
-    { forca: 10, energia: 5 },
-    { forca: 11, energia: 4 },
-    { forca: 12, energia: 6 }
+    { forca: 5, energia: 1 },
+    { forca: 6, energia: 1 },
+    { forca: 7, energia: 1 },
+    { forca: 8, energia: 1 },
+    { forca: 9, energia: 1 },
+    { forca: 10, energia: 1 },
+    { forca: 11, energia: 1 },
+    { forca: 12, energia: 1 }
 ];
 
 var selectedCard = null;
@@ -26,6 +26,9 @@ var cartaPlayer;
 var restantePlayer;
 
 
+const energiaPlay = document.querySelector('.energiaPlayer');
+const placarRodada = document.querySelector('.rodadas');
+
 const botaoInicio = document.getElementById('iniciar');    
 botaoInicio.addEventListener('click', setup);
 
@@ -35,17 +38,10 @@ botaoreset.addEventListener('click', reset);
 const proxrodada = document.getElementById('rodada');
 proxrodada.addEventListener('click', proximarodada);
 
-const localUmp = document.getElementById('um');
-localUmp.addEventListener('click', moveCardToUmp);
 
-const localDoisp = document.getElementById('dois');
-localDoisp.addEventListener('click', moveCardToDoisp);
-
-const localTresp = document.getElementById('tres');
-localTresp.addEventListener('click', moveCardToTresp);
-
-const energiaPlay = document.querySelector('.energiaPlayer');
-const placarRodada = document.querySelector('.rodadas');
+function reset(){
+    location.reload();
+}
 
 function DistribuiCartas(){
     var v=[]
@@ -126,10 +122,6 @@ function proximarodada(){
     }
 }
 
-function reset(){
-    location.reload();
-}
-
 function criaCarta(){
     placarRodada.innerHTML = `RODADAS: ${rodadas}`;
     energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
@@ -194,12 +186,27 @@ function corCard(){
     return cores[indiceCor];
 }
 
+var maxUm = 0;
+var maxDois = 0;
+var maxTres = 0;
+
+const localUmp = document.getElementById('um');
+localUmp.addEventListener('click', moveCardToUmp);
+
+const localDoisp = document.getElementById('dois');
+localDoisp.addEventListener('click', moveCardToDoisp);
+
+const localTresp = document.getElementById('tres');
+localTresp.addEventListener('click', moveCardToTresp);
+
+
 function moveCardToUmp() {
     const energiaCarta = selectedCard.querySelector('.energia');
     const energia = parseInt(energiaCarta.innerHTML);
 
     if (selectedCard !== null){
-        if(confere(energia)){
+        if(confere(energia) && maxUm <4){
+            maxUm++;
             cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
@@ -229,7 +236,8 @@ function moveCardToDoisp() {
     const energia = parseInt(energiaCarta.innerHTML);
 
     if (selectedCard !== null){
-        if(confere(energia)){
+        if(confere(energia) && maxDois<4){
+            maxDois++;
             cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
@@ -257,7 +265,8 @@ function moveCardToTresp() {
     const energiaCarta = selectedCard.querySelector('.energia');
     const energia = parseInt(energiaCarta.innerHTML);
     if (selectedCard !== null){
-        if(confere(energia)){
+        if(confere(energia) && maxTres<4){
+            maxTres++;
             cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
