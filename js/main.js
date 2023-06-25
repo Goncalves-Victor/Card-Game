@@ -1,4 +1,4 @@
-var cartas = [
+/* var cartas = [
     { nome: "Um", forca: 1, energia: 1 },
     { nome: "Dois", forca: 2, energia: 1 },
     { nome: "Tres", forca: 2, energia: 1 },
@@ -11,14 +11,31 @@ var cartas = [
     { nome: "Dez", forca: 6, energia: 4 },
     { nome: "Onze", forca: 9, energia: 5 },
     { nome: "Doze", forca: 12, energia: 6 }
-];
-
+]; */
+ var cartas = [
+    { nome: "Um", forca: 1, energia: 1 },
+    { nome: "Dois", forca: 2, energia: 1 },
+    { nome: "Tres", forca: 3, energia: 1 },
+    { nome: "Quatro", forca: 4, energia: 1 },
+    { nome: "Cinco", forca: 5, energia: 1 },
+    { nome: "Seis", forca: 6, energia: 1 },
+    { nome: "Sete", forca: 7, energia: 1},
+    { nome: "Oito", forca: 8, energia: 1 },
+    { nome: "Nove", forca: 9, energia: 1},
+    { nome: "Dez", forca: 10, energia: 1 },
+    { nome: "Onze", forca: 11, energia:1 },
+    { nome: "Doze", forca: 12, energia: 1 }
+]; 
 var selectedCard = null;
 var energiaPlayer = 1;
 
 var forcaTot1 = 0;
 var forcaTot2 = 0;
 var forcaTot3 = 0;
+
+var forcaTotB1 = 0;
+var forcaTotB2 = 0;
+var forcaTotB3 = 0;
 
 var rodadas = 1;
 
@@ -37,9 +54,6 @@ botaoInicio.addEventListener('click', setup);
 
 const botaoreset = document.getElementById('reset');    
 botaoreset.addEventListener('click', reset);
-
-const proxrodada = document.getElementById('rodada');
-proxrodada.addEventListener('click', proximarodada);
 
 
 function reset(){ //funcao para dar reload na pagina
@@ -98,26 +112,103 @@ function bot(){ //funcao para inicializar o bot
     console.log (restanteBot);
     return restantebot;
 }
-function jogadaBot (){
-    var indice = cartasBot[0];
-    const lugarUmB = document.getElementById('umb');
-    const cartaB = document.createElement('div');
-    cartaB.classList.add ('card');
-    cartaB.style.backgroundColor = corCard();
-    const forcaBot = document.createElement('span');
-    forcaBot.classList.add ('forca');
-    forcaBot.innerHTML = cartas[indice].forca;
 
-    const energiaBot = document.createElement('span');
-    energiaBot.classList.add ('energia');
-    energiaBot.innerHTML = cartas[indice].energia;
-    const cartaFeita = lugarUmB.appendChild (cartaB);
-    cartaFeita.classList.add ('set');
-    cartaFeita.appendChild (forcaBot);
-    cartaFeita.appendChild (energiaBot);
+var maxUmB = 0;
+var maxDoisB = 0;
+var maxTresB = 0;
+function jogadaBot (){
+    const jogadaUm = document.getElementById ('ump')
+    const jogadaDois = document.getElementById ('doisp')
+    const jogadaTres = document.getElementById ('tresp')
+
+    if (maxUmB < 4 && jogadaUm.classList.contains('contem')){
+        const forcaTotal = document.getElementById('1b');
+        var indice = cartasBot[cartasBot.length - 1];
+        const lugarUmB = document.getElementById('umb');
+        const cartaB = document.createElement('div');
+        cartaB.classList.add ('card');
+        cartaB.style.backgroundColor = corCard();
+        const forcaBot = document.createElement('span');
+        forcaBot.classList.add ('forca');
+        forcaBot.innerHTML = cartas[indice].forca;
+        const forca = parseInt (forcaBot.innerHTML);
+        forcaTotB1 = forcaTotB1 + forca;
+    
+        const energiaBot = document.createElement('span');
+        energiaBot.classList.add ('energia');
+        energiaBot.innerHTML = cartas[indice].energia;
+        const cartaFeita = lugarUmB.appendChild (cartaB);
+        cartaFeita.classList.add ('set');
+        cartaFeita.appendChild (forcaBot);
+        cartaFeita.appendChild (energiaBot);
+        
+        forcaTotal.classList.add ('forca');
+        forcaTotal.textContent = forcaTotB1;
+        maxUmB++;
+        cartasBot.pop ();
+        var restB = restanteBot.pop();
+        cartasBot.push (restB);
+    }
+    if (maxDoisB < 4 && jogadaDois.classList.contains('contem2')){
+        const forcaTotal = document.getElementById('2b');
+        var indice = cartasBot[cartasBot.length - 1];
+        const lugarDoisB = document.getElementById('doisb');
+        const cartaB = document.createElement('div');
+        cartaB.classList.add ('card');
+        cartaB.style.backgroundColor = corCard();
+        const forcaBot = document.createElement('span');
+        forcaBot.classList.add ('forca');
+        forcaBot.innerHTML = cartas[indice].forca;
+        const forca = parseInt (forcaBot.innerHTML);
+        forcaTotB2 = forcaTotB2 + forca;
+        
+        const energiaBot = document.createElement('span');
+        energiaBot.classList.add ('energia');
+        energiaBot.innerHTML = cartas[indice].energia;
+        const cartaFeita = lugarDoisB.appendChild (cartaB);
+        cartaFeita.classList.add ('set');
+        cartaFeita.appendChild (forcaBot);
+        cartaFeita.appendChild (energiaBot);
+        forcaTotal.classList.add ('forca');
+        forcaTotal.textContent = forcaTotB2;
+        maxDoisB++;
+        cartasBot.pop ();
+        var restB = restanteBot.pop();
+        cartasBot.push (restB);
+    }
+    if (maxTresB < 4 && jogadaTres.classList.contains('contem3')){
+        const forcaTotal = document.getElementById('3b');
+        var indice = cartasBot[cartasBot.length - 1];
+        const lugarTresB = document.getElementById('tresb');
+        const cartaB = document.createElement('div');
+        cartaB.classList.add ('card');
+        cartaB.style.backgroundColor = corCard();
+        const forcaBot = document.createElement('span');
+        forcaBot.classList.add ('forca');
+        forcaBot.innerHTML = cartas[indice].forca;
+        const forca = parseInt (forcaBot.innerHTML);
+        forcaTotB3 = forcaTotB3 + forca;
+    
+        
+        const energiaBot = document.createElement('span');
+        energiaBot.classList.add ('energia');
+        energiaBot.innerHTML = cartas[indice].energia;
+        const cartaFeita = lugarTresB.appendChild (cartaB);
+        cartaFeita.classList.add ('set');
+        cartaFeita.appendChild (forcaBot);
+        cartaFeita.appendChild (energiaBot);
+        forcaTotal.classList.add ('forca');
+        forcaTotal.textContent = forcaTotB3;
+        maxTresB++;
+        cartasBot.pop ();
+        var restB = restanteBot.pop();
+        cartasBot.push (restB);
+    }
 }
 
 function setup(){
+    const proxrodada = document.getElementById('rodada');
+    proxrodada.addEventListener('click', proximarodada);
     player();
     bot ();
     criaCarta();
@@ -262,6 +353,7 @@ function moveCardToUmp() {
 
             const lugarUm = document.getElementById('ump');
             lugarUm.appendChild(selectedCard);
+            lugarUm.classList.add ('contem');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
@@ -293,6 +385,7 @@ function moveCardToDoisp() {
 
             const lugarDois = document.getElementById('doisp');
             lugarDois.appendChild(selectedCard);
+            lugarDois.classList.add ('contem2');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
@@ -323,6 +416,7 @@ function moveCardToTresp() {
 
             const lugarTres = document.getElementById('tresp');
             lugarTres.appendChild(selectedCard);
+            lugarTres.classList.add ('contem3');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
