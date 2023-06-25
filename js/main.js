@@ -100,7 +100,7 @@ function embaralhar(restantes) {
 
 function proximarodada(){
     rodadas++;
-    placarRodada.innerHTML = rodadas;
+    placarRodada.innerHTML = `RODADAS: ${rodadas}`;
     
     energiaPlayer = rodadas;
     energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
