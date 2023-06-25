@@ -25,6 +25,10 @@ var rodadas = 1;
 var cartaPlayer;
 var restantePlayer;
 
+var cartasBot;
+var energiaBot;
+var restanteBot;
+
 const energiaPlay = document.querySelector('.energiaPlayer');
 const placarRodada = document.querySelector('.rodadas');
 
@@ -84,10 +88,41 @@ function player(){ //funcao para inicializar o jogador
     return restantesplayer;
 }
 
+function bot(){ //funcao para inicializar o bot
+    var cartas = DistribuiCartas();
+    cartas = ordena(cartas);
+    var restantebot = cartasplayer(cartas);
+    cartasBot = cartas;
+    restanteBot = restantebot;
+    console.log (cartasBot);
+    console.log (restanteBot);
+    return restantebot;
+}
+function jogadaBot (){
+    var indice = cartasBot[0];
+    const lugarUmB = document.getElementById('umb');
+    const cartaB = document.createElement('div');
+    cartaB.classList.add ('card');
+    cartaB.style.backgroundColor = corCard();
+    const forcaBot = document.createElement('span');
+    forcaBot.classList.add ('forca');
+    forcaBot.innerHTML = cartas[indice].forca;
+
+    const energiaBot = document.createElement('span');
+    energiaBot.classList.add ('energia');
+    energiaBot.innerHTML = cartas[indice].energia;
+    const cartaFeita = lugarUmB.appendChild (cartaB);
+    cartaFeita.classList.add ('set');
+    cartaFeita.appendChild (forcaBot);
+    cartaFeita.appendChild (energiaBot);
+}
+
 function setup(){
     player();
+    bot ();
     criaCarta();
     botaoInicio.removeEventListener('click', setup);
+    jogadaBot ();
 }
 
 function embaralhar(restantes) {
@@ -119,6 +154,7 @@ function proximarodada(){
     if(energiaPlayer>5){
         proxrodada.removeEventListener('click', proximarodada);
     }
+    jogadaBot ();
 }
 
 function criaCarta(){
