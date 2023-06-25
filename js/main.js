@@ -1,16 +1,16 @@
 var cartas = [
-    { forca: 1, energia: 1 },
-    { forca: 2, energia: 1 },
-    { forca: 3, energia: 1 },
-    { forca: 4, energia: 1 },
-    { forca: 5, energia: 1 },
-    { forca: 6, energia: 1 },
-    { forca: 7, energia: 1 },
-    { forca: 8, energia: 1 },
-    { forca: 9, energia: 1 },
-    { forca: 10, energia: 1 },
-    { forca: 11, energia: 1 },
-    { forca: 12, energia: 1 }
+    { nome: "Um", forca: 1, energia: 1 },
+    { nome: "Dois", forca: 2, energia: 1 },
+    { nome: "Tres", forca: 2, energia: 1 },
+    { nome: "Quatro", forca: 2, energia: 2 },
+    { nome: "Cinco", forca: 2, energia: 2 },
+    { nome: "Seis", forca: 3, energia: 2 },
+    { nome: "Sete", forca: 3, energia: 2 },
+    { nome: "Oito", forca: 4, energia: 3 },
+    { nome: "Nove", forca: 4, energia: 4 },
+    { nome: "Dez", forca: 6, energia: 4 },
+    { nome: "Onze", forca: 9, energia: 5 },
+    { nome: "Doze", forca: 12, energia: 6 }
 ];
 
 var selectedCard = null;
