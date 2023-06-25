@@ -78,6 +78,10 @@ span{
     border-radius: 10px;
 }
 
+.card-hover:hover{
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
 .scaled{
     scale: 1.2;
 

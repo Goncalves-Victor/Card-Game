@@ -138,6 +138,7 @@ function criaCarta(){
 
         const carta = document.createElement('div');
         carta.classList.add('card');
+        carta.classList.add('card-hover');
         carr = deck.appendChild(carta);
         carta.style.backgroundColor = corCard();
 
@@ -227,6 +228,7 @@ function moveCardToUmp() {
             lugarUm.appendChild(selectedCard);
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
+            selectedCard.classList.remove('card-hover');
 
             const forcaCarta = selectedCard.querySelector('.forca');
             const forcaTotal = document.getElementById('1');
@@ -257,6 +259,7 @@ function moveCardToDoisp() {
             lugarDois.appendChild(selectedCard);
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
+            selectedCard.classList.remove('card-hover');
 
             const forcaCarta = selectedCard.querySelector('.forca');
             const forcaTotal = document.getElementById('2');
@@ -286,6 +289,7 @@ function moveCardToTresp() {
             lugarTres.appendChild(selectedCard);
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
+            selectedCard.classList.remove('card-hover');
 
             const forcaCarta = selectedCard.querySelector('.forca');
             const forcaTotal = document.getElementById('3');
