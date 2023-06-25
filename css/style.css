@@ -43,10 +43,12 @@ span{
 
 .local {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 15rem;
-    height: 15rem;
+    height: 16rem;
     background-color: rgb(35, 45, 53);
 }
 
