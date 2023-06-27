@@ -1,5 +1,5 @@
 main {
-    height: 1000px;
+    height: 850px;
 }
 
 body {
@@ -86,7 +86,6 @@ span{
 
 .scaled{
     scale: 1.2;
-
 }
 
 .set{
@@ -105,4 +104,12 @@ span{
     font-size: 3rem;
     font-family: 'Audiowide', cursive; 
     color: black;
+}
+
+.ganhou{
+    color: yellow;
+}
+
+.empate{
+    color: gray;
 }
