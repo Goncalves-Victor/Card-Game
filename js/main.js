@@ -443,4 +443,41 @@ function moveCardToTresp() {
         }
     }
 }
+
+function ganhou() {
+    const forcatotal1 = document.getElementById('1');
+    const forcatotal1b = document.getElementById('1b');
+
+    if (forcaTot1 > forcaTotB1) {
+        forcatotal1.classList.add('ganhou')
+    } else if (forcaTotB1 > forcaTot1) {
+        forcatotal1b.classList.add('ganhou');
+    } else {
+        forcatotal1.classList.add('empate')      
+        forcatotal1b.classList.add('empate');
+    }
   
+    const forcatotal2 = document.getElementById('2');
+    const forcatotal2b = document.getElementById('2b');
+
+    if (forcaTot2 > forcaTotB2) {
+        forcatotal2.classList.add('ganhou');
+    } else if (forcaTotB2 > forcaTot2) {
+        forcatotal2b.classList.add('ganhou');
+    } else {
+        forcatotal2.classList.add('empate');
+        forcatotal2b.classList.add('empate');
+    }
+  
+    const forcatotal3 = document.getElementById('3');
+    const forcatotal3b = document.getElementById('3b');
+
+    if (forcaTot3 > forcaTotB3) {
+        forcatotal3.classList.add('ganhou');
+    } else if (forcaTotB3 > forcaTot3) {
+        forcatotal3b.classList.add('ganhou');
+    } else {
+        forcatotal3.classList.add('empate');
+        forcatotal3b.classList.add('empate');
+    }
+}
