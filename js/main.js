@@ -149,6 +149,7 @@ function jogadaBot (energiaBot){
     if(cartas[indice].energia<=energiaBot){
         energiaBot -= cartas[indice].energia;
         confereEnergia = 1;
+        energiabot.innerHTML = "";
     }else{
         confereEnergia = 0;
     }
