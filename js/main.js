@@ -106,12 +106,11 @@ function aleatorio (){
     return valor;
 }
 
-function jogadaBot (){
-    const jogadaUm = document.getElementById ('ump')
-    const jogadaDois = document.getElementById ('doisp')
-    const jogadaTres = document.getElementById ('tresp')
-
-    energiaBot = rodadas;
+function jogadaBot (energiaBot){
+    if (energiaBot < rodadas){
+    } else{
+        energiaBot = rodadas;
+    }
     
     let aux; //valor para determinar onde a carta vai ser colocada
     let valorAleatorio = aleatorio();
@@ -148,6 +147,7 @@ function jogadaBot (){
     let confereEnergia;
 
     if(cartas[indice].energia<=energiaBot){
+        energiaBot -= cartas[indice].energia;
         confereEnergia = 1;
     }else{
         confereEnergia = 0;
@@ -215,17 +215,22 @@ function jogadaBot (){
         var restB = restanteBot.pop();
         cartasBot.push (restB);
     }
-    if (rodadas < 6){
-        proximarodada();
+    if (energiaBot >= cartas[indice].energia){
+        jogadaBot(energiaBot);
     } else {
+
+         if (rodadas < 6){
+            proximarodada();
+        } else {
             turno.removeEventListener('click', jogadaBot);
             localUmp.removeEventListener('click', moveCardToUmp);
             localDoisp.removeEventListener('click', moveCardToDoisp);
             localTresp.removeEventListener('click', moveCardToTresp);
-    
+            
             ganhou();
+        }
+        
     }
-    
 }
 
 function setup(){
