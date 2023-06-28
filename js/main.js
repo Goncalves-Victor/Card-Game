@@ -222,6 +222,10 @@ function jogadaBot (energiaBot){
          if (rodadas < 6){
             proximarodada();
         } else {
+            if (selectedCard != null){
+                selectedCard.classList.remove ('scaled');
+                selectedCard = null;
+            }
             turno.removeEventListener('click', jogadaBot);
             localUmp.removeEventListener('click', moveCardToUmp);
             localDoisp.removeEventListener('click', moveCardToDoisp);
@@ -262,6 +266,10 @@ function proximarodada(){
         var restp = restantePlayer.pop();
         cartaPlayer.push(restp);
         criaCarta();
+    }
+    if (selectedCard != null){
+        selectedCard.classList.remove ('scaled');
+        selectedCard = null;
     }
 }
 
