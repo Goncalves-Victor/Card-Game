@@ -1,4 +1,4 @@
-/* var cartas = [
+ var cartas = [
     { nome: "Um", forca: 1, energia: 1 },
     { nome: "Dois", forca: 2, energia: 1 },
     { nome: "Tres", forca: 2, energia: 1 },
@@ -11,21 +11,7 @@
     { nome: "Dez", forca: 6, energia: 4 },
     { nome: "Onze", forca: 9, energia: 5 },
     { nome: "Doze", forca: 12, energia: 6 }
-]; */
-var cartas = [
-    { nome: "Um", forca:3, energia: 1 },
-    { nome: "Dois", forca:3, energia: 1 },
-    { nome: "Tres", forca:3, energia: 1 },
-    { nome: "Quatro", forca:3, energia: 1 },
-    { nome: "Cinco", forca:3, energia: 1 },
-    { nome: "Seis", forca:3, energia: 1 },
-    { nome: "Sete", forca:3, energia: 1},
-    { nome: "Oito", forca:3, energia: 1 },
-    { nome: "Nove", forca: 3, energia: 1},
-    { nome: "Dez", forca: 3, energia: 1 },
-    { nome: "Onze", forca: 3, energia:1 },
-    { nome: "Doze", forca: 3, energia: 1 }
-]; 
+];
 
 var rodadas = 1;
 
@@ -115,6 +101,11 @@ function bot(){ //funcao para inicializar o bot
     restanteBot = restantebot;
 }
 
+function aleatorio (){
+    let valor = Math.floor(Math.random()*3) + 1;
+    return valor;
+}
+
 function jogadaBot (){
     const jogadaUm = document.getElementById ('ump')
     const jogadaDois = document.getElementById ('doisp')
@@ -123,6 +114,7 @@ function jogadaBot (){
     energiaBot = rodadas;
     
     let aux; //valor para determinar onde a carta vai ser colocada
+    let valorAleatorio = aleatorio();
  
     if(maxUm!=maxUmB){
         aux=1;
@@ -130,6 +122,8 @@ function jogadaBot (){
         aux=2;
     }else if(maxTres!=maxTresB){
         aux=3;
+    } else {
+        aux=valorAleatorio;
     }
 
     var indice = cartasBot[cartasBot.length - 1];
