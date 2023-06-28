@@ -125,8 +125,12 @@ function jogadaBot (){
     } else {
         aux=valorAleatorio;
     }
+    cartasBot = ordena(cartasBot);
+    var indice = cartasBot[0];
 
-    var indice = cartasBot[cartasBot.length - 1];
+    if (rodadas === 6){
+        indice = cartasBot[cartasBot.length - 1];
+    }
 
     const cartaB = document.createElement('div');
     cartaB.classList.add ('card');
@@ -149,7 +153,7 @@ function jogadaBot (){
         confereEnergia = 0;
     }
 
-    if (maxUmB < 4 && jogadaUm.classList.contains('contem') && aux==1 && confereEnergia == 1){
+    if (maxUmB < 4 && aux==1 && confereEnergia == 1){
 
         const forcaTotal = document.getElementById('1b');
         const lugarUmB = document.getElementById('umb');
@@ -165,12 +169,12 @@ function jogadaBot (){
         forcaTotal.textContent = forcaTotB1;
         maxUmB++;
 
-        cartasBot.pop ();
+        cartasBot.shift ();
         var restB = restanteBot.pop();
         cartasBot.push (restB);
     }
 
-    if (maxDoisB < 4 && jogadaDois.classList.contains('contem2') && aux==2 && confereEnergia == 1){
+    if (maxDoisB < 4 && aux==2 && confereEnergia == 1){
 
         const forcaTotal = document.getElementById('2b');
         const lugarDoisB = document.getElementById('doisb');
@@ -186,12 +190,12 @@ function jogadaBot (){
         forcaTotal.textContent = forcaTotB2;
         maxDoisB++;
 
-        cartasBot.pop ();
+        cartasBot.shift ();
         var restB = restanteBot.pop();
         cartasBot.push (restB);
     }
 
-    if (maxTresB < 4 && jogadaTres.classList.contains('contem3') && aux==3 && confereEnergia == 1){
+    if (maxTresB < 4 && aux==3 && confereEnergia == 1){
         const forcaTotal = document.getElementById('3b');
         const lugarTresB = document.getElementById('tresb');
 
@@ -207,11 +211,21 @@ function jogadaBot (){
         forcaTotal.textContent = forcaTotB3;
         maxTresB++;
 
-        cartasBot.pop ();
+        cartasBot.shift ();
         var restB = restanteBot.pop();
         cartasBot.push (restB);
     }
-    proximarodada();
+    if (rodadas < 6){
+        proximarodada();
+    } else {
+            turno.removeEventListener('click', jogadaBot);
+            localUmp.removeEventListener('click', moveCardToUmp);
+            localDoisp.removeEventListener('click', moveCardToDoisp);
+            localTresp.removeEventListener('click', moveCardToTresp);
+    
+            ganhou();
+    }
+    
 }
 
 function setup(){
@@ -243,16 +257,6 @@ function proximarodada(){
         var restp = restantePlayer.pop();
         cartaPlayer.push(restp);
         criaCarta();
-    }
-
-    if(rodadas==6){
-        turno.removeEventListener('click', jogadaBot);
-
-        localUmp.removeEventListener('click', moveCardToUmp);
-        localDoisp.removeEventListener('click', moveCardToDoisp);
-        localTresp.removeEventListener('click', moveCardToTresp);
-
-        ganhou();
     }
 }
 
@@ -357,7 +361,6 @@ function moveCardToUmp() {
 
             const lugarUm = document.getElementById('ump');
             lugarUm.appendChild(selectedCard);
-            lugarUm.classList.add ('contem');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
@@ -389,7 +392,6 @@ function moveCardToDoisp() {
 
             const lugarDois = document.getElementById('doisp');
             lugarDois.appendChild(selectedCard);
-            lugarDois.classList.add ('contem2');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
@@ -420,7 +422,6 @@ function moveCardToTresp() {
 
             const lugarTres = document.getElementById('tresp');
             lugarTres.appendChild(selectedCard);
-            lugarTres.classList.add ('contem3');
             selectedCard.classList.remove('scaled');
             selectedCard.classList.add('set');
             selectedCard.classList.remove('card-hover');
