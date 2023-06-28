@@ -40,14 +40,17 @@ var maxTresB = 0; //Quantidade maxima de cartas local bot 1
 const energiaPlay = document.querySelector('.energiaPlayer');
 const placarRodada = document.querySelector('.rodadas');
 
-const botaoInicio = document.getElementById('iniciar');    
-botaoInicio.addEventListener('click', setup);
-
 const botaoreset = document.getElementById('reset');    
 botaoreset.addEventListener('click', reset);
 
 const turno = document.getElementById('turno');  
 turno.addEventListener('click', jogadaBot);
+
+
+player();
+bot ();
+criaCarta();
+
 
 function reset(){ //funcao para dar reload na pagina
     location.reload();
