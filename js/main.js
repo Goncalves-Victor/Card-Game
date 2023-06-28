@@ -118,11 +118,11 @@ function jogadaBot (energiaBot){
     let aux; //valor para determinar onde a carta vai ser colocada
     let valorAleatorio = aleatorio();
  
-    if(maxUm!=maxUmB){
+    if(maxUm!==maxUmB){
         aux=1;
-    }else if(maxDois!=maxDoisB){
+    }else if(maxDois!==maxDoisB){
         aux=2;
-    }else if(maxTres!=maxTresB){
+    }else if(maxTres!==maxTresB){
         aux=3;
     } else {
         aux=valorAleatorio;
@@ -157,7 +157,7 @@ function jogadaBot (energiaBot){
         confereEnergia = 0;
     }
 
-    if (maxUmB < 4 && aux==1 && confereEnergia == 1){
+    if (maxUmB < 4 && aux === 1 && confereEnergia === 1){
 
         const forcaTotal = document.getElementById('1b');
         const lugarUmB = document.getElementById('umb');
@@ -178,7 +178,7 @@ function jogadaBot (energiaBot){
         cartasBot.push (restB);
     }
 
-    if (maxDoisB < 4 && aux==2 && confereEnergia == 1){
+    if (maxDoisB < 4 && aux === 2 && confereEnergia === 1){
 
         const forcaTotal = document.getElementById('2b');
         const lugarDoisB = document.getElementById('doisb');
@@ -199,7 +199,7 @@ function jogadaBot (energiaBot){
         cartasBot.push (restB);
     }
 
-    if (maxTresB < 4 && aux==3 && confereEnergia == 1){
+    if (maxTresB < 4 && aux === 3 && confereEnergia === 1){
         const forcaTotal = document.getElementById('3b');
         const lugarTresB = document.getElementById('tresb');
 
@@ -226,7 +226,7 @@ function jogadaBot (energiaBot){
          if (rodadas < 6){
             proximarodada();
         } else {
-            if (selectedCard != null){
+            if (selectedCard !== null){
                 selectedCard.classList.remove ('scaled');
                 selectedCard = null;
             }
@@ -271,7 +271,7 @@ function proximarodada(){
         cartaPlayer.push(restp);
         criaCarta();
     }
-    if (selectedCard != null){
+    if (selectedCard !== null){
         selectedCard.classList.remove ('scaled');
         selectedCard = null;
     }
@@ -285,7 +285,7 @@ function criaCarta(){
     let  tamanho = cartaPlayer.length;
     
     for(let i = 0; i < tamanho; i++) {
-        if(rodadas==1){
+        if(rodadas===1){
             var indice = cartaPlayer[i];
         }else{
             tamanho = 1;
@@ -309,11 +309,11 @@ function criaCarta(){
         carr.appendChild(energia);
 
         carta.addEventListener('click', function() {
-            if(selectedCard==carta){
+            if(selectedCard===carta){
                 carta.classList.remove('scaled');
                 selectedCard=null;
 
-            }else if(selectedCard != null){
+            }else if(selectedCard !== null){
                 selectedCard.classList.remove('scaled');
                 carta.classList.add('scaled');
                 selectedCard = carta;
