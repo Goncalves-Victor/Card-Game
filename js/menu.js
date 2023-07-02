@@ -14,34 +14,25 @@ const cores = [
 var corAtual=null;
 
 function geraCor(){
-    let i = Math.floor(Math.random() * 9);
-    return cores[i];
-}
-
-function GeraCorNova(){
-    let corNova = corAtual;
-    corAtual = geraCor();
-    if(corAtual!=null){
-        if(corAtual==corNova){
-            corAtual=geraCor();
-        }
-        if(corAtual==corNova){
-            corAtual=geraCor();
-        }
+    
+    if(corAtual==null){
+        var i = Math.floor(Math.random() * 9);
     }else{
-        corAtual=geraCor();
+        do{
+            var i = Math.floor(Math.random() * 9);
+        } while(cores[i]==corAtual);
     }
     
-    return(corAtual);
-
+    corAtual=cores[i]
+    return corAtual;
 }
+
 
 function alteraCor(){
     const elementos = document.querySelectorAll(".div-btn");
     for(let i =0;i<elementos.length;i++){
-        elementos[i].style.color=GeraCorNova();
+        elementos[i].style.color=geraCor();
     }
 }
 
-alteraCor();
-setInterval(alteraCor,4000);
+setInterval(alteraCor,1000);

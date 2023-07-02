@@ -1,5 +1,5 @@
 main {
-    height: 1000px;
+    height: 850px;
 }
 
 body {
@@ -43,10 +43,12 @@ span{
 
 .local {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 15rem;
-    height: 15rem;
+    height: 16rem;
     background-color: rgb(35, 45, 53);
 }
 
@@ -78,9 +80,12 @@ span{
     border-radius: 10px;
 }
 
+.card-hover:hover{
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
 .scaled{
     scale: 1.2;
-
 }
 
 .set{
@@ -90,6 +95,8 @@ span{
 
 .forca{
     font-size: 4rem;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
     font-family: 'Audiowide', cursive;
 }
 
@@ -97,4 +104,12 @@ span{
     font-size: 3rem;
     font-family: 'Audiowide', cursive; 
     color: black;
+}
+
+.ganhou{
+    color: yellow;
+}
+
+.empate{
+    color: gray;
 }

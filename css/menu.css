@@ -28,6 +28,8 @@ body{
     top: 50%;
 
     padding: 1.5rem;
+
+    border-radius: 12px
 ;
 }
 
@@ -37,9 +39,10 @@ div.container>a{
 }
 
 .div-btn{
-    transition: 8s;
+    transition: 3s;
 }
 
 .div-btn:hover{
-    scale: 1.3;
+    scale: 1.2;
 }
+
