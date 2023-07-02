@@ -258,10 +258,10 @@ function embaralhar(restantes) {
 
 function proximarodada(){
     rodadas++;
-    placarRodada.innerHTML = `RODADAS: ${rodadas}`;
+    placarRodada.innerHTML = `${rodadas}/6`;
     
     energiaPlayer = rodadas;
-    energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
+    energiaPlay.innerHTML = energiaPlayer;
 
     var restantesplayer = restantePlayer;
     restantesplayer = embaralhar(restantesplayer);
@@ -278,8 +278,8 @@ function proximarodada(){
 }
 
 function criaCarta(){
-    placarRodada.innerHTML = `RODADAS: ${rodadas}`;
-    energiaPlay.innerHTML = `ENERGIA: ${energiaPlayer}`;
+    placarRodada.innerHTML = `${rodadas}/6`;
+    energiaPlay.innerHTML = energiaPlayer;
     const deck = document.querySelector('.deck');
 
     let  tamanho = cartaPlayer.length;
@@ -374,7 +374,7 @@ function moveCardToUmp() {
 
             energiaPlayer = energiaPlayer-energia;
 
-            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
+            energiaPlay.innerHTML= energiaPlayer;
 
             const lugarUm = document.getElementById('ump');
             lugarUm.appendChild(selectedCard);
@@ -405,7 +405,7 @@ function moveCardToDoisp() {
             cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
-            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
+            energiaPlay.innerHTML =energiaPlayer;
 
             const lugarDois = document.getElementById('doisp');
             lugarDois.appendChild(selectedCard);
@@ -435,7 +435,7 @@ function moveCardToTresp() {
             cartaPlayer.pop();
 
             energiaPlayer = energiaPlayer-energia;
-            energiaPlay.innerHTML=`ENERGIA: ${energiaPlayer}`;
+            energiaPlay.innerHTML= energiaPlayer;
 
             const lugarTres = document.getElementById('tresp');
             lugarTres.appendChild(selectedCard);
