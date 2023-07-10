@@ -241,12 +241,6 @@ function jogadaBot (energiaBot){
     }
 }
 
-function setup(){
-    player();
-    bot ();
-    criaCarta();
-    botaoInicio.removeEventListener('click', setup);
-}
 
 function embaralhar(restantes) {
     for (let i = restantes.length - 1; i > 0; i--) {
