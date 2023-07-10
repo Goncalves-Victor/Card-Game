@@ -15,7 +15,15 @@
 </head>
 <body>
     <main>
-        <button id="reset">Reset</button>
+        <a id="link" href="index.html">
+            <div class="menu">
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+            </div>
+        </a>
+        <div class ="reset" id="reset">Reset</div>
+
 
         <span class="rodadas"></span>
         <span class="energiaPlayer"></span>
@@ -29,16 +37,30 @@
 
             <div class="tabuleiro">
                 <div class="lugar" id="um">
-                    <span class="forcaTotalBot" id=1b></span>
-                    <span class="forcaTotal" id=1></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=1b></span>
+                    </div>
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=1></span>
+                    </div>
                 </div>
                 <div class="lugar" id="dois">
-                    <span class="forcaTotalBot" id=2b></span>
-                    <span class="forcaTotal" id=2></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=2b></span>
+                    </div>
+                    
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=2></span>
+                    </div>
                 </div>
                 <div class="lugar" id="tres">
-                    <span class="forcaTotalBot" id=3b></span>
-                    <span class="forcaTotal" id=3></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=3b></span>
+                    </div>
+                    
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=3></span>
+                    </div>
                 </div>
             </div>
 
@@ -49,7 +71,8 @@
             </div>
         </div>
 
-        <button id="turno">Termina turno</button>
+        <div id="turno" class="turno-btn">Termina turno</div>
+
         
         <div class="container">
             <div class="deck"></div>
