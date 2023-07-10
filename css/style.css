@@ -31,6 +31,19 @@ span{
     background-color: rgb(41, 52, 61);
 }
 
+.lugar-carta{
+    /* background-color: green; */
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 80%;
+    height: 40%;
+}
+
+
+
+
 .locais{
     display: flex;
     justify-content: center;
@@ -95,8 +108,6 @@ span{
 
 .forca{
     font-size: 4rem;
-    margin-left: 1.8rem;
-    margin-right: 1.8rem;
     font-family: 'Audiowide', cursive;
 }
 
