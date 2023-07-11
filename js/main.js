@@ -1,4 +1,4 @@
- var cartas = [
+var cartas = [
     { nome: "Jotaro Kujo", forca: 1, energia: 1 },
     { nome: "Giorno Giovanna", forca: 2, energia: 1 },
     { nome: "Jonathan Joestar", forca: 2, energia: 1 },
@@ -45,7 +45,6 @@ botaoreset.addEventListener('click', reset);
 
 const turno = document.getElementById('turno');  
 turno.addEventListener('click', jogadaBot);
-
 
 player();
 bot ();
@@ -225,25 +224,31 @@ function jogadaBot (energiaBot){
     if (energiaBot >= cartas[indice].energia){
         jogadaBot(energiaBot);
     } else {
-
-         if (rodadas < 6){
+        if (rodadas < 6){
             proximarodada();
         } else {
             if (selectedCard !== null){
                 selectedCard.classList.remove ('scaled');
                 selectedCard = null;
+                removeSelecionado();
             }
             turno.removeEventListener('click', jogadaBot);
             localUmp.removeEventListener('click', moveCardToUmp);
             localDoisp.removeEventListener('click', moveCardToDoisp);
             localTresp.removeEventListener('click', moveCardToTresp);
             
+            const cartaHover = document.querySelectorAll('.card-hover');
+
+            for (let i = 0; i < cartaHover.length; i++) {
+                cartaHover[i].classList.remove('card-hover');
+            }
+            
+            
             ganhou();
         }
         
     }
 }
-
 
 function embaralhar(restantes) {
     for (let i = restantes.length - 1; i > 0; i--) {
@@ -272,6 +277,7 @@ function proximarodada(){
         selectedCard.classList.remove ('scaled');
         selectedCard = null;
     }
+    removeSelecionado();
 }
 
 function criaCarta(){
@@ -309,13 +315,14 @@ function criaCarta(){
             if(selectedCard===carta){
                 carta.classList.remove('scaled');
                 selectedCard=null;
-
+                removeSelecionado();
             }else if(selectedCard !== null){
                 selectedCard.classList.remove('scaled');
                 carta.classList.add('scaled');
                 selectedCard = carta;
-
+                adicionaSelecionado();
             }else{
+                adicionaSelecionado();
                 carta.classList.add('scaled');
                 selectedCard = carta;
             }
@@ -386,6 +393,8 @@ function moveCardToUmp() {
             forcaTotal.classList.add('forca');
             forcaTotal.textContent = forcaTot1;
 
+            removeSelecionado();
+
             energiaCarta.textContent = "";
             selectedCard = null;  
         }
@@ -417,6 +426,8 @@ function moveCardToDoisp() {
             forcaTotal.classList.add('forca');
             forcaTotal.textContent = forcaTot2;
 
+            removeSelecionado();
+
             energiaCarta.textContent = "";
             selectedCard = null;  
         }
@@ -446,6 +457,8 @@ function moveCardToTresp() {
             forcaTot3 = forcaTot3+forca;
             forcaTotal.classList.add('forca');
             forcaTotal.textContent = forcaTot3;
+
+            removeSelecionado();
 
             energiaCarta.textContent = "";
             selectedCard = null;  
@@ -519,7 +532,6 @@ function ganhou() {
     alert.style.display='inherit'
 }
 
-
 function somaLugares(){
 
     var v=[];
@@ -528,4 +540,28 @@ function somaLugares(){
     v[1]=forcaTotB1+forcaTotB2+forcaTotB3;
 
     return v;
+}
+
+function removeSelecionado(){
+    const localUm = document.getElementById('um');
+    localUm.classList.remove('selecionado')
+    const localDois = document.getElementById('dois');
+    localDois.classList.remove('selecionado')
+    const localTres = document.getElementById('tres');
+    localTres.classList.remove('selecionado')
+}
+
+function adicionaSelecionado(){
+    const l1 = document.getElementById('um');
+    const l2 = document.getElementById('dois');
+    const l3 = document.getElementById('tres');
+    if(maxUm<4){
+        l1.classList.add('selecionado');
+    }
+    if(maxDois<4){
+        l2.classList.add('selecionado');
+    }
+    if(maxTres<4){
+        l3.classList.add('selecionado');
+    }
 }

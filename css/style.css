@@ -95,6 +95,10 @@ span{
     box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
 }
 
+.selecionado{
+    box-shadow: 0 0 5px #2da010, 0 0 10px #2da010, 0 0 15px #2da010;
+}
+
 .scaled{
     scale: 1.2;
 }
