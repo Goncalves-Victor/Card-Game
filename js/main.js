@@ -458,7 +458,6 @@ function ganhou() {
     const forcatotal1b = document.getElementById('1b');
     var player = 0;
     var bot = 0;
-    var empate = 0;
 
     if (forcaTot1 > forcaTotB1) {
         forcatotal1.classList.add('ganhou');
@@ -469,7 +468,6 @@ function ganhou() {
     } else {
         forcatotal1.classList.add('empate');     
         forcatotal1b.classList.add('empate');
-        empate++;
     }
   
     const forcatotal2 = document.getElementById('2');
@@ -484,7 +482,6 @@ function ganhou() {
     } else {
         forcatotal2.classList.add('empate');
         forcatotal2b.classList.add('empate');
-        empate++;
     }
   
     const forcatotal3 = document.getElementById('3');
@@ -499,7 +496,6 @@ function ganhou() {
     } else {
         forcatotal3.classList.add('empate');
         forcatotal3b.classList.add('empate');
-        empate++;
     }
 
     const textAlert = document.getElementById('textAlert');
