@@ -51,6 +51,9 @@ player();
 bot ();
 criaCarta();
 
+const alert=document.getElementById('alert');
+alert.style.display="none"
+
 
 function reset(){ //funcao para dar reload na pagina
     location.reload();
@@ -453,14 +456,20 @@ function moveCardToTresp() {
 function ganhou() {
     const forcatotal1 = document.getElementById('1');
     const forcatotal1b = document.getElementById('1b');
+    var player = 0;
+    var bot = 0;
+    var empate = 0;
 
     if (forcaTot1 > forcaTotB1) {
-        forcatotal1.classList.add('ganhou')
+        forcatotal1.classList.add('ganhou');
+        player++;
     } else if (forcaTotB1 > forcaTot1) {
         forcatotal1b.classList.add('ganhou');
+        bot++;
     } else {
-        forcatotal1.classList.add('empate')      
+        forcatotal1.classList.add('empate');     
         forcatotal1b.classList.add('empate');
+        empate++;
     }
   
     const forcatotal2 = document.getElementById('2');
@@ -468,11 +477,14 @@ function ganhou() {
 
     if (forcaTot2 > forcaTotB2) {
         forcatotal2.classList.add('ganhou');
+        player++;
     } else if (forcaTotB2 > forcaTot2) {
         forcatotal2b.classList.add('ganhou');
+        bot++;
     } else {
         forcatotal2.classList.add('empate');
         forcatotal2b.classList.add('empate');
+        empate++;
     }
   
     const forcatotal3 = document.getElementById('3');
@@ -480,10 +492,44 @@ function ganhou() {
 
     if (forcaTot3 > forcaTotB3) {
         forcatotal3.classList.add('ganhou');
+        player++;
     } else if (forcaTotB3 > forcaTot3) {
         forcatotal3b.classList.add('ganhou');
+        bot++;
     } else {
         forcatotal3.classList.add('empate');
         forcatotal3b.classList.add('empate');
+        empate++;
     }
+
+    const textAlert = document.getElementById('textAlert');
+    
+    if(player>bot){
+        textAlert.innerHTML="VITÓRIA"
+        
+    }else if(bot>player){
+        textAlert.innerHTML="DERROTA"
+        
+    }else if(bot===player){
+        let v=somaLugares();
+        if(v[0]>v[1]){
+            textAlert.innerHTML="VITÓRIA";
+        }else{
+            textAlert.innerHTML="DERROTA"
+        }
+        
+    }
+
+    alert.style.display='inherit'
+}
+
+
+function somaLugares(){
+
+    var v=[];
+
+    v[0]=forcaTot1+forcaTot2+forcaTot3;
+    v[1]=forcaTotB1+forcaTotB2+forcaTotB3;
+
+    return v;
 }

@@ -42,8 +42,6 @@ span{
 }
 
 
-
-
 .locais{
     display: flex;
     justify-content: center;
@@ -184,4 +182,17 @@ span{
     font-size: 2rem;
     top: 5%;
     right: 20px;
+}
+
+.alert{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 45%;
+    left: 50%;
+}
+
+.text-alert{
+    color: rgba(255, 255, 255, 80%);
+    font-family: 'Audiowide';
+    font-size: 11rem;
 }
