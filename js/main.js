@@ -1,16 +1,16 @@
  var cartas = [
-    { nome: "Um", forca: 1, energia: 1 },
-    { nome: "Dois", forca: 2, energia: 1 },
-    { nome: "Tres", forca: 2, energia: 1 },
-    { nome: "Quatro", forca: 2, energia: 2 },
-    { nome: "Cinco", forca: 2, energia: 2 },
-    { nome: "Seis", forca: 3, energia: 2 },
-    { nome: "Sete", forca: 3, energia: 2 },
-    { nome: "Oito", forca: 4, energia: 3 },
-    { nome: "Nove", forca: 4, energia: 4 },
-    { nome: "Dez", forca: 6, energia: 4 },
-    { nome: "Onze", forca: 9, energia: 5 },
-    { nome: "Doze", forca: 12, energia: 6 }
+    { nome: "Jotaro Kujo", forca: 1, energia: 1 },
+    { nome: "Giorno Giovanna", forca: 2, energia: 1 },
+    { nome: "Jonathan Joestar", forca: 2, energia: 1 },
+    { nome: "Joseph Joestar", forca: 2, energia: 2 },
+    { nome: "Kakyoin", forca: 2, energia: 2 },
+    { nome: "Polnareff", forca: 3, energia: 2 },
+    { nome: "Avdol", forca: 3, energia: 2 },
+    { nome: "Zeppeli", forca: 4, energia: 3 },
+    { nome: "Star Platinum", forca: 4, energia: 4 },
+    { nome: "Hermit Purple", forca: 6, energia: 4 },
+    { nome: "Silver Chariot", forca: 9, energia: 5 },
+    { nome: "Emperor", forca: 12, energia: 6 }
 ];
 
 var rodadas = 1;
