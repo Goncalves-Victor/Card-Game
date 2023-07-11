@@ -31,6 +31,17 @@ span{
     background-color: rgb(41, 52, 61);
 }
 
+.lugar-carta{
+    /* background-color: green; */
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 80%;
+    height: 40%;
+}
+
+
 .locais{
     display: flex;
     justify-content: center;
@@ -43,10 +54,12 @@ span{
 
 .local {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 15rem;
-    height: 15rem;
+    height: 16rem;
     background-color: rgb(35, 45, 53);
 }
 
@@ -76,12 +89,14 @@ span{
     flex-direction: column;
     padding: 10px;
     border-radius: 10px;
-    background-color: pink;
+}
+
+.card-hover:hover{
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
 }
 
 .scaled{
     scale: 1.2;
-
 }
 
 .set{
@@ -98,4 +113,86 @@ span{
     font-size: 3rem;
     font-family: 'Audiowide', cursive; 
     color: black;
+}
+
+.ganhou{
+    color: yellow;
+}
+
+.empate{
+    color: gray;
+}
+.menu{
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: baseline;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.menu-item {
+    margin-bottom: 1.5px;
+    padding: 5px 25px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.turno-btn {
+
+  font-family: 'Audiowide';
+  position: fixed;
+  bottom: 142px;
+  left: 3.1%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  border: 1.2px solid black;
+  cursor: pointer;
+}
+
+
+#reset {
+    font-family: 'Audiowide';
+    position: fixed;
+    bottom: 5.5%;
+    right: 10px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1.2px solid black;
+    color: white;
+    cursor: pointer;
+}
+
+.energiaPlayer {
+    position: fixed;
+    font-family: 'Audiowide';
+    color: yellow;
+    bottom: 50px; /* Ajuste a distância desejada da parte inferior */
+    left: 7.5%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+}
+.rodadas {
+    position: fixed;
+    font-family: 'Audiowide';
+    font-size: 2rem;
+    top: 5%;
+    right: 20px;
+}
+
+.alert{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 45%;
+    left: 50%;
+}
+
+.text-alert{
+    color: rgba(255, 255, 255, 80%);
+    font-family: 'Audiowide';
+    font-size: 11rem;
 }

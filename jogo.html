@@ -15,10 +15,23 @@
 </head>
 <body>
     <main>
-        <button id="iniciar">Iniciar Jogo</button>
-        <button id="rodada">Proxima Rodada</button>
-        <button id="reset">Reset</button>
 
+        
+
+
+        <a id="link" href="index.html">
+            <div class="menu">
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+                <div class="menu-item"></div>
+            </div>
+        </a>
+        <div class ="reset" id="reset">Reset</div>
+
+
+        <span class="rodadas"></span>
+        <span class="energiaPlayer"></span>
+        
         <div class="mapa">
             <div class="locais" id="bot">
                 <div class="local" id="umb"></div>
@@ -28,13 +41,30 @@
 
             <div class="tabuleiro">
                 <div class="lugar" id="um">
-                    <span class="forcaTotal" id=1></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=1b></span>
+                    </div>
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=1></span>
+                    </div>
                 </div>
                 <div class="lugar" id="dois">
-                    <span class="forcaTotal" id=2></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=2b></span>
+                    </div>
+                    
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=2></span>
+                    </div>
                 </div>
                 <div class="lugar" id="tres">
-                    <span class="forcaTotal" id=3></span>
+                    <div class="lugar-carta">
+                        <span class="forcaTotalBot" id=3b></span>
+                    </div>
+                    
+                    <div class="lugar-carta">
+                        <span class="forcaTotal" id=3></span>
+                    </div>
                 </div>
             </div>
 
@@ -45,10 +75,15 @@
             </div>
         </div>
 
+        <div id="turno" class="turno-btn">Termina turno</div>
+
+        
         <div class="container">
             <div class="deck"></div>
         </div>
-
+        <div class="alert" id="alert">
+            <h1 class="text-alert" id="textAlert">VITÓRIA</h1>
+        </div>
     </main>
 </body>
 </html>
